@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Selection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
+            overflow: hidden;
+        }
+
+        /* Видео фон */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .Main {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            text-align: center;
+        }
+
+        /* Кнопка "Назад" */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 0.5px solid #000000;
+            color: #000000;
+            background: transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 0 0 5px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #c6d7df;
+            box-shadow: 0 0 2px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #c6d7df;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #c6d7df, 0 0 30px #c6d7df, 0 0 45px #c6d7df;
+        }
+
+        /* Основной заголовок */
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #000000;
+            text-shadow: 0 0 2px #c6d7df, 0 0 2px #c6d7df, 0 0 2px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #ffffff;
+        }
+
+        /* Кнопки выбора системы */
+        .button-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            font-size: 20px;
+            font-weight: 500;
+            border: 0.5px solid #000000;
+            color: #000000;
+            background: transparent;
+            text-shadow: 0 0 5px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #c6d7df;
+            box-shadow: 0 0 2px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #c6d7df;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #c6d7df, 0 0 30px #c6d7df, 0 0 45px #c6d7df;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Видео на заднем фоне -->
+    <video autoplay muted loop class="video-bg">
+        <source src="../MyMiniApp/src/back.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео фон.
+    </video>
+
+    <div class="Main">
+        <!-- Кнопка "Назад" -->
+        <a href="index.html" class="back-btn">Back</a>
+
+        <!-- Заголовок и кнопки выбора системы -->
+        <h1 id="typewriter">System selection</h1>
+        <div class="button-group">
+            <button class="btn" onclick="window.location.href='ios.html'">iOS</button>
+            <button class="btn" onclick="window.location.href='android.html'">Android</button>
+        </div>
+    </div>
+
+    <script>
+        const text = "System selection";
+        const speed = 100; // Скорость печати в миллисекундах
+        let index = 0;
+
+        function typeEffect() {
+            if (index < text.length) {
+                document.getElementById("typewriter").textContent += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, speed);
+            }
+        }
+
+        // Очищаем заголовок и запускаем эффект печати после загрузки страницы
+        window.onload = function() {
+            document.getElementById("typewriter").textContent = "";
+            typeEffect();
+        };
+    </script>
+</body>
+</html>

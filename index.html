@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
+            overflow: hidden;
+        }
+
+        /* Видео фон */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* чтобы видео было за контентом */
+        }
+
+        .Main {
+            position: relative; /* Разрешает добавлять фоновое видео */
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            text-align: center;
+           
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #000000;
+            text-shadow: 0 0 2px #c6d7df, 0 0 2px #c6d7df, 0 0 2px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #ffffff;
+        }
+
+        img {
+            width: 70px;
+            margin: 30px auto;
+            
+        }
+
+        .btn {
+            border: 0.5px solid #000000;
+            border-radius: 0.5px;
+            margin-top: 30px;
+            height: 60px;
+            width: 200px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #000000;
+            background: transparent;
+            text-shadow: 0 0 5px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #c6d7df;
+            box-shadow: 0 0 2px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #c6d7df;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #c6d7df, 0 0 30px #c6d7df, 0 0 45px #c6d7df;
+        }
+    </style>
+</head>
+<body>
+    <!-- Видео на заднем фоне -->
+    <video autoplay muted loop class="video-bg">
+        <source src="../MyMiniApp/src/back.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео фон.
+    </video>
+
+    <div class="Main">
+        <h1 id="typewriter"></h1>
+        <img src="../MyMiniApp/img/photo_5258152539088609117_x.jpg">
+        <button class="btn" onclick="window.location.href='index2.html'">Check themes</button>
+    </div>
+
+    <script>
+        const text = "Shop with telegram themes";
+        const speed = 100;
+        let index = 0;
+
+        function typeEffect() {
+            if (index < text.length) {
+                document.getElementById("typewriter").textContent += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, speed);
+            }
+        }
+
+        window.onload = typeEffect;
+    </script>
+</body>
+</html>
