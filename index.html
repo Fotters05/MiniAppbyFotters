@@ -20,18 +20,20 @@
         }
 
         /* Видео фон */
-        .video-bg {
+        .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1; /* чтобы видео было за контентом */
+            background-image: url('../MyMiniApp/img/bacc.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1; /* чтобы фон был позади контента */
         }
 
         .Main {
-            position: relative; /* Разрешает добавлять фоновое видео */
+            position: relative; /* Разрешает добавлять фоновое изображение */
             width: 100%;
             height: 100vh;
             display: flex;
@@ -40,7 +42,6 @@
             justify-content: center;
             padding: 25px;
             text-align: center;
-           
         }
 
         h1 {
@@ -48,13 +49,12 @@
             font-size: 32px;
             font-weight: bold;
             color: #000000;
-            text-shadow: 0 0 2px #c6d7df, 0 0 2px #c6d7df, 0 0 2px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #ffffff;
+            text-shadow: 0 0 5px #c6d7df, 0 0 10px #c6d7df;
         }
 
         img {
             width: 70px;
             margin: 30px auto;
-            
         }
 
         .btn {
@@ -68,8 +68,8 @@
             cursor: pointer;
             color: #000000;
             background: transparent;
-            text-shadow: 0 0 5px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #c6d7df;
-            box-shadow: 0 0 2px #c6d7df, 0 0 5px #c6d7df, 0 0 10px #c6d7df;
+            text-shadow: 0 0 15px #c6d7df;
+            box-shadow: 0 0 7px #c6d7df;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
@@ -80,15 +80,12 @@
     </style>
 </head>
 <body>
-    <!-- Видео на заднем фоне -->
-    <video autoplay muted loop class="video-bg">
-        <source src="../MyMiniApp/src/back.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео фон.
-    </video>
+    <!-- Статичное изображение на заднем фоне -->
+    <div class="background"></div>
 
     <div class="Main">
         <h1 id="typewriter"></h1>
-        <img src="../MyMiniApp/img/photo_5258152539088609117_x.jpg">
+        <img src="../MyMiniApp/img/logo.webp" alt="Logo">
         <button class="btn" onclick="window.location.href='index2.html'">Check themes</button>
     </div>
 
